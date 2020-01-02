@@ -25,7 +25,7 @@ public class FileService {
             File localFile = null;
             if (!file.isEmpty()){
                 try{
-                    localFile = saveToLocal(file, filePath);
+                    localFile = saveToLocal(file);
                     String path = StringUtils.substringAfterLast(localFile.getAbsolutePath(), filePath);
                     paths.add(path);
                 }catch (Exception e){
@@ -36,7 +36,7 @@ public class FileService {
         return paths;
     }
 
-    private File saveToLocal(MultipartFile file, String filePath2) throws IOException {
+    private File saveToLocal(MultipartFile file) throws IOException {
         File newFile = new File(filePath+ "/"+ Instant.now().getEpochSecond()+ "/" + file.getOriginalFilename());
         if (!newFile.exists()){
             newFile.getParentFile().mkdirs();
