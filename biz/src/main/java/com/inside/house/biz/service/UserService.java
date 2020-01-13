@@ -28,9 +28,11 @@ public class UserService {
     private FileService fileService;
     @Autowired
     private MailService mailService;
+    @Value("${file.prefix}")
+    private String imgPrefix;
 
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userMapper.selectUsers();
     }
 
@@ -51,5 +53,24 @@ public class UserService {
 
     public boolean enable(String key) {
         return mailService.enable(key);
+    }
+
+    public User auth(String username, String password) {
+        User user = new User();
+        user.setEmail(username);
+        user.setPasswd(HashUtils.encryptPassword(password));
+        user.setEnable(1);
+        List<User> users = getUserByQuery(user);
+        if (!users.isEmpty())
+            return users.get(0);
+        return null;
+    }
+
+    private List<User> getUserByQuery(User user) {
+        List<User> users = userMapper.selectUsersByQuery(user);
+        users.forEach(u -> {
+            u.setAvatar(imgPrefix + u.getAvatar());
+        });
+        return users;
     }
 }
