@@ -18,12 +18,14 @@ public class AuthActionInterceptor implements HandlerInterceptor {
             String msg = URLEncoder.encode("清先登录", "utf-8");
             String target = URLEncoder.encode(request.getRequestURL().toString(), "utf-8");
             if ("GET".equalsIgnoreCase(request.getMethod())) {
-                response.sendRedirect("/accounts/sigin?errorMsg=" + msg + "&target=" + target);
+                response.sendRedirect("/accounts/signin?errorMsg=" + msg + "&target=" + target);
+                return false;
             } else {
-                response.sendRedirect("/accounts/sigin?errorMsg=" + msg);
+                response.sendRedirect("/accounts/signin?errorMsg=" + msg);
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 }

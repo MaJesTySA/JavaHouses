@@ -66,11 +66,17 @@ public class UserService {
         return null;
     }
 
-    private List<User> getUserByQuery(User user) {
+    public List<User> getUserByQuery(User user) {
         List<User> users = userMapper.selectUsersByQuery(user);
         users.forEach(u -> {
             u.setAvatar(imgPrefix + u.getAvatar());
         });
         return users;
+    }
+
+    public void updateUser(User updateUser, String email) {
+        updateUser.setEmail(email);
+        BeanHelper.onUpdate(updateUser);
+        userMapper.update(updateUser);
     }
 }

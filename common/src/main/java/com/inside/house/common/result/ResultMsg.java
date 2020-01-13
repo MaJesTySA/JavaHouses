@@ -11,7 +11,7 @@ public class ResultMsg {
     private String errorMsg;
     private String successMsg;
     public static final String errorMsgKey = "errorMsg";
-    public static final String successMsgKey = "successMsgKey";
+    public static final String successMsgKey = "successMsg";
 
     public String getErrorMsg() {
         return errorMsg;
