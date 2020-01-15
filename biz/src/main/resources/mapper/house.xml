@@ -54,7 +54,7 @@
         select
         <include refid="houseField"/>
         from house a
-        <include refid="houseCondition"></include>
+        <include refid="houseCondition"/>
         <choose>
             <when test="house.sort != null and house.sort == 'price_asc'">
                 order by a.price asc
@@ -77,7 +77,7 @@
     <select id="selectPageCount" resultType="long">
         select count(id)
         from house a
-        <include refid="houseCondition"></include>
+        <include refid="houseCondition"/>
     </select>
 
     <select id="selectCommunity" resultType="community">
@@ -88,7 +88,7 @@
                 and id = #{id}
             </if>
             <if test="name != null and name != ''">
-                and name = #{name}
+                and name like concat('%',#{name},'%')
             </if>
         </where>
     </select>

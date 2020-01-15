@@ -14,7 +14,6 @@ import java.util.List;
 public interface HouseMapper {
     List<House> selectPageHouses(@Param("house") House house, @Param("pageParams") PageParams pageParams);
     Long selectPageCount(@Param("house") House query);
-
     List<Community> selectCommunity(Community community);
 //    int insert(User account);
 

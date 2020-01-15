@@ -25,27 +25,35 @@ public class HouseService {
     private HouseMapper houseMapper;
 
     public PageData<House> queryHouse(House query, PageParams pageParams) {
-        List<House> houses = Lists.newArrayList();
-        if (!Strings.isNullOrEmpty(query.getName())){
+        if (!Strings.isNullOrEmpty(query.getName())) {
             Community community = new Community();
             community.setName(query.getName());
             List<Community> communities = houseMapper.selectCommunity(community);
-            if (!communities.isEmpty()){
+            if (!communities.isEmpty()) {
                 query.setCommunityId(communities.get(0).getId());
             }
         }
-        houses = queryAndSetImg(query, pageParams);
+        List<House> houses = queryAndSetImg(query, pageParams);
         Long count = houseMapper.selectPageCount(query);
         return PageData.buildPage(houses, count, pageParams.getPageSize(), pageParams.getPageNum());
     }
 
     private List<House> queryAndSetImg(House query, PageParams pageParams) {
         List<House> houses = houseMapper.selectPageHouses(query, pageParams);
-        houses.forEach( h ->{
-            h.setFirstImg(imgPrefix+h.getFirstImg());
-            h.setImageList(h.getImageList().stream().map( img -> imgPrefix + img).collect(Collectors.toList()));
+        houses.forEach(h -> {
+            h.setFirstImg(imgPrefix + h.getFirstImg());
+            h.setImageList(h.getImageList().stream().map(img -> imgPrefix + img).collect(Collectors.toList()));
             h.setFloorPlanList(h.getFloorPlanList().stream().map(pic -> imgPrefix + pic).collect(Collectors.toList()));
         });
         return houses;
+    }
+
+    public House queryOneHouse(Long id) {
+        House query = new House();
+        query.setId(id);
+        List<House> houses = queryAndSetImg(query, PageParams.build(1,1));
+        if (!houses.isEmpty())
+            return houses.get(0);
+        return null;
     }
 }

@@ -20,5 +20,6 @@
     <mappers>
         <mapper resource="mapper/user.xml"/>
         <mapper resource="mapper/house.xml"/>
+        <mapper resource="mapper/agency.xml"/>
     </mappers>
 </configuration>
