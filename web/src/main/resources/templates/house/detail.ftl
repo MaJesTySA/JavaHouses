@@ -4,25 +4,19 @@
 <@common.header/>
 
 <body class="page-sub-page page-property-detail" id="page-top">
-<!-- Wrapper -->
 <div class="wrapper">
-    <!-- Navigation -->
-    <@common.nav/><!-- /.navigation -->
-    <!-- end Navigation -->
-    <!-- Page Content -->
+    <@common.nav/>
     <div id="page-content">
-        <!-- Breadcrumb -->
+
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li class="active">Property Detail</li>
             </ol>
         </div>
-        <!-- end Breadcrumb -->
 
         <div class="container">
             <div class="row">
-                <!-- Property Detail Content -->
                 <div class="col-md-9 col-sm-9">
                     <section id="property-detail">
                         <header class="property-title">
@@ -31,7 +25,6 @@
 
                         <#if loginUser??>
                             <span class="actions">
-                                <!--<a href="#" class="fa fa-print"></a>-->
                                 <a href="#" class="bookmark" data-bookmark-state="empty"
  
                                 ><span class="title-add">Add to bookmark</span><span class="title-added">Added</span></a>
@@ -46,9 +39,9 @@
                                          <div class="overlay"><h3>Front View</h3></div>
                                          <img alt="" src="${image}">
                                      </a>
-                                   </div><!-- /.property-slide -->
+                                   </div>
                                 </#list>
-                            </div><!-- /.property-carousel -->
+                            </div>
                         </section>
                         <div class="row">
                             <div class="col-md-4 col-sm-12">
@@ -58,7 +51,7 @@
                                         <dt>地址</dt>
                                             <dd>${house.address}</dd>
                                         <dt>价格</dt>
-                                            <dd><span class="tag price">${house.priceStr}</span></dd>
+                                            <dd><span class="tag price">${house.price}</span></dd>
                                         <dt>类型:</dt>
                                             <dd>销售</dd>
                                         <dt>面积:</dt>
@@ -80,9 +73,9 @@
                                 <section id="property-features">
                                     <header><h2>房屋特点</h2></header>
                                     <ul class="list-unstyled property-features-list">
-                                    <#list house.featureList as feature> 
-                                        <li>${feature}</li>
-                                    </#list>
+<#--                                    <#list house.featureList as feature> -->
+<#--                                        <li>${feature}</li>-->
+<#--                                    </#list>-->
                                     </ul>
                                 </section><!-- /#property-features -->
                                 <section id="floor-plans">
@@ -193,22 +186,22 @@
                                                 </div>
                                     <header><h2 class="no-border">Comments</h2></header>
                                     <ul class="comments">
-                                      <#list commentList as comment> 
-                                        <li class="comment" style="width: 830px;">
-                                            <figure>
-                                                <div class="image">
-                                                    <img alt="" src="${comment.avatar}">
-                                                </div>
-                                            </figure>
-                                            <div class="comment-wrapper">
-                                                <div class="name pull-left">${comment.userName}</div>
-                                                <span class="date pull-right"><span class="fa fa-calendar"></span>${(comment.createTime)?datetime}</span>
-                                                <p>${comment.content}
-                                                </p>
-                                                <hr>
-                                            </div>
-                                        </li>
-                                      </#list>
+<#--                                      <#list commentList as comment> -->
+<#--                                        <li class="comment" style="width: 830px;">-->
+<#--                                            <figure>-->
+<#--                                                <div class="image">-->
+<#--                                                    <img alt="" src="${comment.avatar}">-->
+<#--                                                </div>-->
+<#--                                            </figure>-->
+<#--                                            <div class="comment-wrapper">-->
+<#--                                                <div class="name pull-left">${comment.userName}</div>-->
+<#--                                                <span class="date pull-right"><span class="fa fa-calendar"></span>${(comment.createTime)?datetime}</span>-->
+<#--                                                <p>${comment.content}-->
+<#--                                                </p>-->
+<#--                                                <hr>-->
+<#--                                            </div>-->
+<#--                                        </li>-->
+<#--                                      </#list>-->
                                     </ul>
                                 </section>
                             </div><!-- /.col-md-12 -->
@@ -244,20 +237,20 @@
                         </aside><!-- /#edit-search -->
                         <aside id="featured-properties">
                             <header><h3>热门房产</h3></header>
-                            <#list recomHouses as house>
-                            <div class="property small">
-                                <a href="/house/detail?id=${house.id}">
-                                    <div class="property-image">
-                                        <img alt="" src="${(house.firstImg)!}" style="width: 100px;height: 75px">
-                                    </div>
-                                </a>
-                                <div class="info">
-                                    <a href="/house/detail?id=${house.id}"><h4>${(house.name)!}</h4></a>
-                                    <figure>${(house.address)!} </figure>
-                                    <div class="tag price">￥${(house.price)!}</div>
-                                </div>
-                            </div><!-- /.property -->
-                            </#list>
+<#--                            <#list recomHouses as house>-->
+<#--                            <div class="property small">-->
+<#--                                <a href="/house/detail?id=${house.id}">-->
+<#--                                    <div class="property-image">-->
+<#--                                        <img alt="" src="${(house.firstImg)!}" style="width: 100px;height: 75px">-->
+<#--                                    </div>-->
+<#--                                </a>-->
+<#--                                <div class="info">-->
+<#--                                    <a href="/house/detail?id=${house.id}"><h4>${(house.name)!}</h4></a>-->
+<#--                                    <figure>${(house.address)!} </figure>-->
+<#--                                    <div class="tag price">￥${(house.price)!}</div>-->
+<#--                                </div>-->
+<#--                            </div><!-- /.property &ndash;&gt;-->
+<#--                            </#list>-->
                         </aside><!-- /#featured-properties -->
                        
                     </section><!-- /#sidebar -->
